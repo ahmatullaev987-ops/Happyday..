@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения!</title>
+    <style>
+        body { margin: 0; height: 100vh; background: #1a1a1a; display: flex; justify-content: center; align-items: center; font-family: 'Georgia', serif; overflow: hidden; }
+        .envelope-wrapper { position: relative; width: 320px; height: 220px; background: #d4af37; border-radius: 5px; cursor: pointer; transition: transform 0.5s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .envelope-wrapper:hover { transform: scale(1.02); }
+        .flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 160px solid transparent; border-right: 160px solid transparent; border-top: 120px solid #c09b2d; transform-origin: top; transition: transform 0.8s ease-in-out; z-index: 3; }
+        .seal { position: absolute; top: 100px; left: 135px; width: 50px; height: 50px; background: #b30000; border-radius: 50%; box-shadow: inset -2px -2px 5px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.3); z-index: 4; transition: opacity 0.5s, transform 0.5s; }
+        .seal::after { content: 'Д'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.4); font-weight: bold; font-size: 24px; font-family: 'Arial'; }
+        .letter { position: absolute; top: 0; left: 10px; right: 10px; bottom: 10px; background: #fff8e7; padding: 20px; text-align: center; font-size: 15px; line-height: 1.5; color: #333; opacity: 0; transform: translateY(20px); transition: all 0.8s 0.4s; z-index: 2; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 5px; display: flex; flex-direction: column; justify-content: center; }
+        .letter h2 { color: #b30000; margin-top: 0; font-size: 20px; }
+        .letter p { margin: 5px 0; }
+        .open .flap { transform: rotateX(180deg); z-index: 1; }
+        .open .seal { opacity: 0; transform: scale(1.5); }
+        .open .letter { opacity: 1; transform: translateY(-120px); z-index: 5; height: 280px; }
+    </style>
+</head>
+<body>
+    <div class="envelope-wrapper" id="envelope" onclick="openLetter()">
+        <div class="letter">
+            <h2>С прошедшим Днём Рождения, Дана! 🎂</h2>
+            <p>Пусть этот год принесёт тебе столько же радости, сколько ты даришь окружающим.</p>
+        </div>
+        <div class="flap"></div>
+        <div class="seal"></div>
+    </div>
+    <script>
+        function openLetter() {
+            const envelope = document.getElementById('envelope');
+            envelope.classList.add('open');
+        }
+    </script>
+</body>
+</html>
